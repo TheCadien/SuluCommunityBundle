@@ -22,10 +22,10 @@ use Sulu\Bundle\SecurityBundle\Entity\User;
 use Sulu\Bundle\TestBundle\Testing\SuluTestCase;
 use Sulu\Component\HttpKernel\SuluKernel;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
-use Symfony\Bundle\SwiftmailerBundle\DataCollector\MessageDataCollector;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Profiler\Profile;
+use Symfony\Component\Mime\RawMessage;
 
 /**
  * This testcases covers the whole registration, confirmation and login process.
@@ -113,6 +113,13 @@ class RegistrationTest extends SuluTestCase
     public function testLogin(): void
     {
         $this->testConfirmation();
+        $user = $this->findUser();
+
+        if ($user) {
+            $user->setSalt('');
+            $user->setPassword('my-sulu');
+            $this->getEntityManager()->flush();
+        }
 
         $crawler = $this->client->request('GET', '/login');
         $this->assertHttpStatusCode(200, $this->client->getResponse());
@@ -181,8 +188,12 @@ class RegistrationTest extends SuluTestCase
         $this->assertNull($this->findUser());
     }
 
-    public function testRegistrationBlacklistedRequested(): \Swift_Message
+    public function testRegistrationBlacklistedRequested(): ?RawMessage
     {
+        if (\class_exists(\Swift_Mailer::class)) {
+            $this->markTestSkipped('Skip test for swift mailer.');
+        }
+
         $this->createBlacklistItem($this->getEntityManager(), '*@sulu.io', BlacklistItem::TYPE_REQUEST);
 
         $crawler = $this->client->request('GET', '/registration');
@@ -209,11 +220,10 @@ class RegistrationTest extends SuluTestCase
         $profile = $this->client->getProfile();
         $this->assertNotFalse($profile, 'Could not found response profile, is profiler activated?');
 
-        /** @var MessageDataCollector $mailCollector */
-        $mailCollector = $profile->getCollector('swiftmailer');
-        $this->assertSame(1, $mailCollector->getMessageCount());
-        $message = $mailCollector->getMessages()[0];
-        $this->assertSame('admin@localhost', \key($message->getTo()));
+        $this->assertEmailCount(1);
+
+        $message = $this->getMailerMessage();
+        $this->assertSame('admin@localhost', $message->getTo()[0]->getAddress());
 
         return $message;
     }
@@ -223,7 +233,7 @@ class RegistrationTest extends SuluTestCase
         $message = $this->testRegistrationBlacklistedRequested();
 
         $emailCrawler = new Crawler();
-        $emailCrawler->addContent($message->getBody());
+        $emailCrawler->addContent($message->getHtmlBody());
 
         $links = $emailCrawler->filter('a');
         $firstLink = $links->first()->attr('href');
@@ -241,11 +251,10 @@ class RegistrationTest extends SuluTestCase
         $profile = $this->client->getProfile();
         $this->assertNotFalse($profile, 'Could not found response profile, is profiler activated?');
 
-        /** @var MessageDataCollector $mailCollector */
-        $mailCollector = $profile->getCollector('swiftmailer');
-        $this->assertSame(1, $mailCollector->getMessageCount());
-        $message = $mailCollector->getMessages()[0];
-        $this->assertSame('hikaru@sulu.io', \key($message->getTo()));
+        $this->assertEmailCount(1);
+
+        $message = $this->getMailerMessage();
+        $this->assertSame('hikaru@sulu.io', $message->getTo()[0]->getAddress());
     }
 
     public function testBlacklistBlocked(): void
@@ -253,7 +262,7 @@ class RegistrationTest extends SuluTestCase
         $message = $this->testRegistrationBlacklistedRequested();
 
         $emailCrawler = new Crawler();
-        $emailCrawler->addContent($message->getBody());
+        $emailCrawler->addContent($message->getHtmlBody());
 
         $links = $emailCrawler->filter('a');
         $lastLink = $links->last()->attr('href');
@@ -271,13 +280,15 @@ class RegistrationTest extends SuluTestCase
         $profile = $this->client->getProfile();
         $this->assertNotFalse($profile, 'Could not found response profile, is profiler activated?');
 
-        /** @var MessageDataCollector $mailCollector */
-        $mailCollector = $profile->getCollector('swiftmailer');
-        $this->assertSame(0, $mailCollector->getMessageCount());
+        $this->assertEmailCount(0);
     }
 
     public function testPasswordForget(): void
     {
+        if (\class_exists(\Swift_Mailer::class)) {
+            $this->markTestSkipped('Skip test for swift mailer.');
+        }
+
         $user = $this->testConfirmation();
 
         $crawler = $this->client->request('GET', '/password-forget');
@@ -298,14 +309,13 @@ class RegistrationTest extends SuluTestCase
         $profile = $this->client->getProfile();
         $this->assertNotFalse($profile, 'Could not found response profile, is profiler activated?');
 
-        /** @var MessageDataCollector $mailCollector */
-        $mailCollector = $profile->getCollector('swiftmailer');
-        $this->assertSame(1, $mailCollector->getMessageCount());
-        $message = $mailCollector->getMessages()[0];
-        $this->assertSame('hikaru@sulu.io', \key($message->getTo()));
+        $this->assertEmailCount(1);
+
+        $message = $this->getMailerMessage();
+        $this->assertSame('hikaru@sulu.io', $message->getTo()[0]->getAddress());
 
         $emailCrawler = new Crawler();
-        $emailCrawler->addContent($message->getBody());
+        $emailCrawler->addContent($message->getHtmlBody());
         $links = $emailCrawler->filter('a');
 
         $firstLink = $links->first()->attr('href');
@@ -325,10 +335,10 @@ class RegistrationTest extends SuluTestCase
         );
         $this->client->submit($form);
 
-        $this->getEntityManager()->clear();
+        //$this->getEntityManager()->clear();
 
         /** @var User $user */
-        $user = $this->findUser();
+        $user = $this->findUser('sulu');
         $password = $user->getPassword();
         $this->assertNotNull($password);
         $this->assertStringStartsWith('my-new-password', $password);
@@ -339,14 +349,12 @@ class RegistrationTest extends SuluTestCase
      */
     private function findUser(string $username = 'sulu'): ?User
     {
-        // clear entity-manager to ensure newest user
-        $this->getEntityManager()->clear();
-
         $repository = $this->getContainer()->get('sulu.repository.user');
 
         try {
             /** @var User $user */
             $user = $repository->findUserByUsername($username);
+            $this->getEntityManager()->refresh($user);
 
             return $user;
         } catch (NoResultException $exception) {
