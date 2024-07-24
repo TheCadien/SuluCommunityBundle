@@ -33,7 +33,7 @@ class Exist extends Constraint
      */
     public $entity = '';
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return 'exist_validator';
     }

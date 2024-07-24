@@ -72,7 +72,7 @@ class InitCommand extends Command
             ->addArgument('webspace', null, 'A specific webspace key.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var string|null $webspaceKey */
         $webspaceKey = $input->getArgument('webspace');
