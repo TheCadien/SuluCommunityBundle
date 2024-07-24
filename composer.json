@@ -35,7 +35,7 @@
         "massive/search-bundle": "^2.0",
         "php-cs-fixer/shim": "^3.9",
         "phpspec/prophecy": "^1.16",
-        "phpstan/phpstan": "1.0",
+        "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-doctrine": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "phpstan/phpstan-symfony": "^1.0",
