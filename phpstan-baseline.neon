@@ -11,6 +11,11 @@ parameters:
 			path: Controller/AbstractController.php
 
 		-
+			message: "#^If condition is always false\\.$#"
+			count: 1
+			path: Controller/AbstractController.php
+
+		-
 			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Controller\\\\AbstractController\\:\\:getSubscribedServices\\(\\) should return array\\<int\\|string, string\\> but returns array\\<string\\|Symfony\\\\Contracts\\\\Service\\\\Attribute\\\\SubscribedService\\>\\.$#"
 			count: 1
 			path: Controller/AbstractController.php
@@ -21,24 +26,14 @@ parameters:
 			path: Controller/AbstractController.php
 
 		-
-			message: "#^Strict comparison using \\=\\=\\= between true and array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} will always evaluate to false\\.$#"
-			count: 1
-			path: Controller/BlacklistConfirmationController.php
+			message: "#^Parameter \\#1 \\$type of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManagerInterface\\:\\:getConfigTypeProperty\\(\\) expects 'blacklist_confirmed'\\|'blacklist_denied'\\|'blacklisted'\\|'completion'\\|'confirmation'\\|'email_confirmation'\\|'firewall'\\|'from'\\|'login'\\|'maintenance'\\|'password_forget'\\|'password_reset'\\|'profile'\\|'registration'\\|'role'\\|'to'\\|'webspace_key', string given\\.$#"
+			count: 2
+			path: Controller/AbstractController.php
 
 		-
-			message: "#^If condition is always true\\.$#"
-			count: 1
-			path: Controller/CompletionController.php
-
-		-
-			message: "#^Parameter \\#1 \\$type of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:createForm\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/CompletionController.php
-
-		-
-			message: "#^Parameter \\#1 \\$url of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:redirect\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\>\\|string given\\.$#"
-			count: 1
-			path: Controller/CompletionController.php
+			message: "#^Unable to resolve the template type TConfig in call to method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManagerInterface\\:\\:getConfigTypeProperty\\(\\)$#"
+			count: 2
+			path: Controller/AbstractController.php
 
 		-
 			message: "#^Parameter \\#1 \\$user of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManagerInterface\\:\\:completion\\(\\) expects Sulu\\\\Bundle\\\\SecurityBundle\\\\Entity\\\\User, mixed given\\.$#"
@@ -51,84 +46,14 @@ parameters:
 			path: Controller/CompletionController.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: Controller/CompletionController.php
-
-		-
-			message: "#^If condition is always true\\.$#"
-			count: 1
-			path: Controller/ConfirmationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$haystack of function strpos expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/ConfirmationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$name of method Symfony\\\\Component\\\\Routing\\\\Generator\\\\UrlGeneratorInterface\\:\\:generate\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/ConfirmationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$url of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:redirect\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\>\\|string given\\.$#"
-			count: 1
-			path: Controller/ConfirmationController.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: Controller/ConfirmationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$view of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Controller\\\\AbstractController\\:\\:render\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/LoginController.php
-
-		-
-			message: "#^If condition is always true\\.$#"
-			count: 2
-			path: Controller/PasswordController.php
-
-		-
 			message: "#^Parameter \\#1 \\$emailUsername of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManagerInterface\\:\\:passwordForget\\(\\) expects string, mixed given\\.$#"
 			count: 1
 			path: Controller/PasswordController.php
 
 		-
-			message: "#^Parameter \\#1 \\$type of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:createForm\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 2
-			path: Controller/PasswordController.php
-
-		-
-			message: "#^Parameter \\#1 \\$url of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:redirect\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 2
-			path: Controller/PasswordController.php
-
-		-
 			message: "#^Parameter \\#1 \\$user of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Controller\\\\AbstractController\\:\\:setUserPasswordAndSalt\\(\\) expects Sulu\\\\Bundle\\\\SecurityBundle\\\\Entity\\\\User, mixed given\\.$#"
 			count: 1
 			path: Controller/PasswordController.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 2
-			path: Controller/PasswordController.php
-
-		-
-			message: "#^If condition is always true\\.$#"
-			count: 1
-			path: Controller/ProfileController.php
-
-		-
-			message: "#^Parameter \\#1 \\$type of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:createForm\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/ProfileController.php
-
-		-
-			message: "#^Parameter \\#1 \\$url of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:redirect\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/ProfileController.php
 
 		-
 			message: "#^Parameter \\#1 \\$user of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Controller\\\\AbstractController\\:\\:setUserPasswordAndSalt\\(\\) expects Sulu\\\\Bundle\\\\SecurityBundle\\\\Entity\\\\User, mixed given\\.$#"
@@ -136,38 +61,13 @@ parameters:
 			path: Controller/ProfileController.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: Controller/ProfileController.php
-
-		-
-			message: "#^If condition is always true\\.$#"
-			count: 1
-			path: Controller/RegistrationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$type of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:createForm\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/RegistrationController.php
-
-		-
-			message: "#^Parameter \\#1 \\$url of method Symfony\\\\Bundle\\\\FrameworkBundle\\\\Controller\\\\AbstractController\\:\\:redirect\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: Controller/RegistrationController.php
-
-		-
 			message: "#^Parameter \\#1 \\$user of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Controller\\\\AbstractController\\:\\:setUserPasswordAndSalt\\(\\) expects Sulu\\\\Bundle\\\\SecurityBundle\\\\Entity\\\\User, mixed given\\.$#"
-			count: 1
-			path: Controller/RegistrationController.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
 			count: 1
 			path: Controller/RegistrationController.php
 
 		-
 			message: "#^Cannot access offset 'template' on mixed\\.$#"
-			count: 3
+			count: 2
 			path: DependencyInjection/CompilerPass/CommunityManagerCompilerPass.php
 
 		-
@@ -211,52 +111,57 @@ parameters:
 			path: DependencyInjection/CompilerPass/CommunityValidatorCompilerPass.php
 
 		-
-			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Event\\\\AbstractCommunityEvent\\:\\:getConfigProperty\\(\\) should return array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} but returns array\\<array\\|bool\\|string\\|null\\>\\|string\\.$#"
+			message: "#^Class Sulu\\\\Bundle\\\\CommunityBundle\\\\Entity\\\\BlacklistItemRepository extends generic class Sulu\\\\Component\\\\Persistence\\\\Repository\\\\ORM\\\\EntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Entity/BlacklistItemRepository.php
+
+		-
+			message: "#^Class Sulu\\\\Bundle\\\\CommunityBundle\\\\Entity\\\\BlacklistUserRepository extends generic class Sulu\\\\Component\\\\Persistence\\\\Repository\\\\ORM\\\\EntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Entity/BlacklistUserRepository.php
+
+		-
+			message: "#^Class Sulu\\\\Bundle\\\\CommunityBundle\\\\Entity\\\\EmailConfirmationTokenRepository extends generic class Sulu\\\\Component\\\\Persistence\\\\Repository\\\\ORM\\\\EntityRepository but does not specify its types\\: T$#"
+			count: 1
+			path: Entity/EmailConfirmationTokenRepository.php
+
+		-
+			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Event\\\\AbstractCommunityEvent\\:\\:getConfigProperty\\(\\) has invalid return type Sulu\\\\Bundle\\\\CommunityBundle\\\\Event\\\\TTypeConfig\\.$#"
 			count: 1
 			path: Event/AbstractCommunityEvent.php
 
 		-
-			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Event\\\\AbstractCommunityEvent\\:\\:getConfigTypeProperty\\(\\) should return array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} but returns array\\|bool\\|string\\|null\\.$#"
+			message: "#^Offset TTypeConfigProperty of 'activate_user'\\|'auto_login'\\|'delete_user'\\|'email'\\|'embed_template'\\|'enabled'\\|'options'\\|'redirect_to'\\|'service'\\|'template'\\|'type' does not exist on array\\<array\\|bool\\|string\\|null\\>\\|string\\.$#"
 			count: 1
 			path: Event/AbstractCommunityEvent.php
 
 		-
-			message: "#^Offset TTypeConfigProperty of string does not exist on array\\<array\\|bool\\|string\\|null\\>\\|string\\.$#"
-			count: 1
-			path: Event/AbstractCommunityEvent.php
-
-		-
-			message: "#^Parameter \\#1 \\$from of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$from of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: EventListener/BlacklistListener.php
 
 		-
-			message: "#^Parameter \\#2 \\$to of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#2 \\$to of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: EventListener/BlacklistListener.php
 
 		-
-			message: "#^Parameter \\#2 \\$webspaceKey of class Sulu\\\\Bundle\\\\CommunityBundle\\\\Entity\\\\BlacklistUser constructor expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#2 \\$webspaceKey of class Sulu\\\\Bundle\\\\CommunityBundle\\\\Entity\\\\BlacklistUser constructor expects string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: EventListener/BlacklistListener.php
 
 		-
-			message: "#^Parameter \\#3 \\$config of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\{subject\\: string, user_template\\: string\\|null, admin_template\\: string\\|null\\}, array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} given\\.$#"
+			message: "#^Offset 'firewall' on array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} on left side of \\?\\? always exists and is not nullable\\.$#"
 			count: 1
-			path: EventListener/BlacklistListener.php
+			path: EventListener/CompletionListener.php
 
 		-
-			message: "#^Parameter \\#1 \\$from of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$from of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: EventListener/EmailConfirmationListener.php
 
 		-
-			message: "#^Parameter \\#2 \\$to of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 1
-			path: EventListener/EmailConfirmationListener.php
-
-		-
-			message: "#^Parameter \\#3 \\$config of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\{subject\\: string, user_template\\: string\\|null, admin_template\\: string\\|null\\}, array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} given\\.$#"
+			message: "#^Parameter \\#2 \\$to of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: EventListener/EmailConfirmationListener.php
 
@@ -296,22 +201,17 @@ parameters:
 			path: Mail/MailFactory.php
 
 		-
-			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManager\\:\\:getConfigProperty\\(\\) should return array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} but returns array\\<array\\|bool\\|string\\|null\\>\\|string\\.$#"
+			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManager\\:\\:getConfigProperty\\(\\) has invalid return type Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\TTypeConfig\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
 
 		-
-			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManager\\:\\:getConfigTypeProperty\\(\\) should return array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} but returns array\\|bool\\|string\\|null\\.$#"
+			message: "#^Parameter \\#1 \\$from of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
 
 		-
-			message: "#^Parameter \\#1 \\$enabled of method Sulu\\\\Bundle\\\\SecurityBundle\\\\Entity\\\\User\\:\\:setEnabled\\(\\) expects bool, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
-			count: 2
-			path: Manager/CommunityManager.php
-
-		-
-			message: "#^Parameter \\#1 \\$from of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$type of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManager\\:\\:getConfigTypeProperty\\(\\) expects TConfig of 'blacklist_confirmed'\\|'blacklist_denied'\\|'blacklisted'\\|'completion'\\|'confirmation'\\|'email_confirmation'\\|'firewall'\\|'from'\\|'login'\\|'maintenance'\\|'password_forget'\\|'password_reset'\\|'profile'\\|'registration'\\|'role'\\|'to'\\|'webspace_key', string given\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
 
@@ -321,24 +221,39 @@ parameters:
 			path: Manager/CommunityManager.php
 
 		-
-			message: "#^Parameter \\#2 \\$firewallName of class Symfony\\\\Component\\\\Security\\\\Core\\\\Authentication\\\\Token\\\\UsernamePasswordToken constructor expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#2 \\$firewallName of class Symfony\\\\Component\\\\Security\\\\Core\\\\Authentication\\\\Token\\\\UsernamePasswordToken constructor expects string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
 
 		-
-			message: "#^Parameter \\#2 \\$to of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#2 \\$to of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\<string\\>\\|string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
 
 		-
-			message: "#^Parameter \\#3 \\$config of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\{subject\\: string, user_template\\: string\\|null, admin_template\\: string\\|null\\}, array\\{from\\: array\\<string\\>\\|string, to\\: array\\<string\\>\\|string, webspace_key\\: string, role\\: string, firewall\\: string, maintenance\\: array\\{enabled\\: bool, template\\: string\\}, login\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, registration\\: array\\{enabled\\: bool, template\\: string, service\\: string\\|null, embed_template\\: string, type\\: string, options\\: array, activate_user\\: bool, auto_login\\: bool, \\.\\.\\.\\}, \\.\\.\\.\\} given\\.$#"
+			message: "#^Parameter \\#3 \\$config of static method Sulu\\\\Bundle\\\\CommunityBundle\\\\Mail\\\\Mail\\:\\:create\\(\\) expects array\\{subject\\: string, user_template\\: string\\|null, admin_template\\: string\\|null\\}, array\\|bool\\|string\\|null given\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
 
 		-
-			message: "#^Parameter \\#3 \\$roleName of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\UserManagerInterface\\:\\:createUser\\(\\) expects string, array\\<string, array\\<array\\|bool\\|string\\|null\\>\\|string\\> given\\.$#"
+			message: "#^Parameter \\#3 \\$roleName of method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\UserManagerInterface\\:\\:createUser\\(\\) expects string, array\\<array\\|bool\\|string\\|null\\>\\|string given\\.$#"
 			count: 1
 			path: Manager/CommunityManager.php
+
+		-
+			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\CommunityManagerInterface\\:\\:getConfigProperty\\(\\) has invalid return type Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\TTypeConfig\\.$#"
+			count: 1
+			path: Manager/CommunityManagerInterface.php
+
+		-
+			message: "#^Method Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\UserManager\\:\\:__construct\\(\\) has parameter \\$contactManager with generic interface Sulu\\\\Bundle\\\\ContactBundle\\\\Contact\\\\ContactManagerInterface but does not specify its types\\: DoctrineEntity, ApiEntity, AddressRelationEntity$#"
+			count: 1
+			path: Manager/UserManager.php
+
+		-
+			message: "#^Property Sulu\\\\Bundle\\\\CommunityBundle\\\\Manager\\\\UserManager\\:\\:\\$contactManager with generic interface Sulu\\\\Bundle\\\\ContactBundle\\\\Contact\\\\ContactManagerInterface does not specify its types\\: DoctrineEntity, ApiEntity, AddressRelationEntity$#"
+			count: 1
+			path: Manager/UserManager.php
 
 		-
 			message: "#^If condition is always true\\.$#"
@@ -354,4 +269,14 @@ parameters:
 			message: "#^Cannot call method getTo\\(\\) on Symfony\\\\Component\\\\Mime\\\\RawMessage\\|null\\.$#"
 			count: 3
 			path: Tests/Functional/Controller/RegistrationTest.php
+
+		-
+			message: "#^Access to an undefined property Sulu\\\\Bundle\\\\CommunityBundle\\\\Tests\\\\Unit\\\\Controller\\\\SaveMediaTraitTest\\:\\:\\$container\\.$#"
+			count: 2
+			path: Tests/Unit/Controller/SaveMediaTraitTest.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$repository contains generic class Doctrine\\\\ORM\\\\EntityRepository but does not specify its types\\: TEntityClass$#"
+			count: 1
+			path: Validator/Constraints/ExistValidator.php
 

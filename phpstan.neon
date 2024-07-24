@@ -19,6 +19,5 @@ parameters:
         container_xml_path: %currentWorkingDirectory%/Tests/Application/var/cache/admin/dev/Sulu_Bundle_CommunityBundle_Tests_Application_KernelDevDebugContainer.xml
         console_application_loader: Tests/phpstan/console-application.php
         constant_hassers: false
-    checkGenericClassInNonGenericObjectType: false
     doctrine:
         objectManagerLoader: Tests/phpstan/object-manager.php
