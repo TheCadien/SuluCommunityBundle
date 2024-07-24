@@ -23,7 +23,7 @@ class Blocked extends Constraint
      */
     public $message = 'The email "%email%" is blocked.';
 
-    public function validatedBy()
+    public function validatedBy(): string
     {
         return 'blocked_validator';
     }
